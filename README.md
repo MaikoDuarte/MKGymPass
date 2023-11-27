@@ -1,6 +1,5 @@
-#App
-
-GymPass style app.
+# MKGYMPASS
+Aplicação similar ao gympass onde podemos controlar os usuários da academia através de check-ins.  
 
 ## RFs (Requisitos funcionais)
 - [x] Deve ser possível se cadastrar;
