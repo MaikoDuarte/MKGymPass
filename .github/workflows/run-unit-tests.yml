@@ -17,4 +17,4 @@ run-unit-tests:
 
     -run: npm ci
 
-    -run: npm rn test
+    -run: npm run test
