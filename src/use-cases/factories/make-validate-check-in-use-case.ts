@@ -1,9 +1,9 @@
-import { PrismaCheckInsRepository } from '@/repositories/prisma/prisma-check-ins-repository'
-import { ValidateCheckInUseCase } from '../validate-check-in'
+import { PrismaUsersRepository } from '@/repositories/prisma/prisma-users-repository'
+import { GetUserProfileUseCase } from '../get-user-profile'
 
-export function makeValidateCheckInUseCase() {
-  const checkInsRespository = new PrismaCheckInsRepository()
-  const useCase = new ValidateCheckInUseCase(checkInsRespository)
+export function makeValidateCheckInsUseCase() {
+  const checkInsRespository = new PrismaUsersRepository()
+  const useCase = new GetUserProfileUseCase(checkInsRespository)
 
   return useCase
 }

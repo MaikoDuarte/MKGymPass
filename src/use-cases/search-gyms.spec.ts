@@ -1,7 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import { InMemoryGymsRepository } from '@/repositories/in-memory/in-memory-gyms-repository'
 import { SearchGymsUseCase } from './search-gyms'
-
 let gymsRepository: InMemoryGymsRepository
 let sut: SearchGymsUseCase
 
@@ -13,49 +12,49 @@ describe('Search Gyms Use Case', () => {
 
   it('should be able to search for gyms', async () => {
     await gymsRepository.create({
-      title: 'JavaScript Gym',
+      title: 'Javascript Gym',
       description: null,
       phone: null,
-      latitude: -27.2092052,
-      longitude: -49.6401091,
+      latitude: -23.58971390500857,
+      longitude: -46.63453929269108,
     })
 
     await gymsRepository.create({
-      title: 'TypeScript Gym',
+      title: 'Typescript Gym',
       description: null,
       phone: null,
-      latitude: -27.2092052,
-      longitude: -49.6401091,
+      latitude: -23.58971390500857,
+      longitude: -46.63453929269108,
     })
     const { gyms } = await sut.execute({
-      query: 'JavaScript',
+      query: 'Javascript',
       page: 1,
     })
 
     expect(gyms).toHaveLength(1)
-    expect(gyms).toEqual([expect.objectContaining({ title: 'JavaScript Gym' })])
+    expect(gyms).toEqual([expect.objectContaining({ title: 'Javascript Gym' })])
   })
 
-  it('should be able to fetch paginated gym search', async () => {
+  it('should be able to fetch paginated gyms search', async () => {
     for (let i = 1; i <= 22; i++) {
       await gymsRepository.create({
-        title: `JavaScript Gym ${i}`,
+        title: `Javascript Gym ${i}`,
         description: null,
         phone: null,
-        latitude: -27.2092052,
-        longitude: -49.6401091,
+        latitude: -23.58971390500857,
+        longitude: -46.63453929269108,
       })
     }
 
     const { gyms } = await sut.execute({
-      query: 'JavaScript',
+      query: 'Javascript',
       page: 2,
     })
 
     expect(gyms).toHaveLength(2)
     expect(gyms).toEqual([
-      expect.objectContaining({ title: 'JavaScript Gym 21' }),
-      expect.objectContaining({ title: 'JavaScript Gym 22' }),
+      expect.objectContaining({ title: 'Javascript Gym 21' }),
+      expect.objectContaining({ gym_id: 'Javascript Gym 22' }),
     ])
   })
 })
