@@ -19,7 +19,7 @@ describe('Get User Metrics Use Case', () => {
 
     await checkInsRepository.create({
       gym_id: 'gym-02',
-      user_id: 'user-02',
+      user_id: 'user-01',
     })
     const { checkInsCount } = await sut.execute({
       userId: 'user-01',
